@@ -1,17 +1,18 @@
 import React from 'react';
 import { Box, TextField } from '@mui/material';
 
-export default function CommonInput({ type, label,onchange }) {
+export default function CommonInput({ type, label, onchange }) {
   return (
-    <Box>
+    <div>
       <TextField
-        sx={{ margin: 2, width: '100%' }} // Adjust margin and width for better layout
+        sx={{ margin:1, width: '100%' }}
         label={label}
         type={type}
         onChange={onchange}
         variant="outlined"
         required
       />
-    </Box>
+    </div>
+
   );
 }

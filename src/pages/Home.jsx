@@ -230,7 +230,7 @@ export default function Home() {
 
         <Box>
           <CommonButton
-            tital={'Log Out'}
+            title={'Log Out'}
             onclick={logOut}
           >
           </CommonButton>

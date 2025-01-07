@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-export default function CommonButton({ tital,onclick }) {
+export default function CommonButton({ title,onclick }) {
   return (
     <Button
       variant="contained"
@@ -14,7 +14,7 @@ export default function CommonButton({ tital,onclick }) {
         width: '100%',
       }}
     >
-      {tital}
+      {title}
       
     </Button>
   );

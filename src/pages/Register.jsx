@@ -53,7 +53,7 @@ export default function Register() {
         </Box>
 
         <Box>
-          <CommonButton tital={'Login'} />
+          <CommonButton title={'Login'} />
         </Box>
 
         <Box>

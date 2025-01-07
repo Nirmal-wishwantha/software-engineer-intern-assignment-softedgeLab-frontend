@@ -87,7 +87,7 @@ export default function Login() {
 
         <Box>
           <CommonButton
-            tital={'Login'}
+            title={'Login'}
             onclick={LoginPage}
           />
         </Box>
