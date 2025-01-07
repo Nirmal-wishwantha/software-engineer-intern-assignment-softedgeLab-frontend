@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import CommonButton from '../common/component/CommonButton';
 import CommonInput from '../common/component/commonInput';
 import { Link } from 'react-router-dom';
+import instance from '../services/AxiosOder';
 
 export default function Login() {
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const LoginPage = () => {
+    const data = {
+      email: email,
+      password: password
+    }
+
+    instance.post('/login/user',data)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
+
+
+
   return (
     <Box
       sx={{
@@ -25,27 +49,41 @@ export default function Login() {
           textAlign: 'center',
         }}
       >
-        <Typography 
-        sx={{fontSize:40,fontWeight:500}}>
+        <Typography
+          sx={{ fontSize: 40, fontWeight: 500 }}>
           Login Form
         </Typography>
 
-       
+
 
         <Box sx={{ marginTop: 2 }}>
-          <CommonInput label={'Email'} type={'email'} />
-          <CommonInput label={'Password'} type={'password'} />
-        </Box>
-
-        <Box>
-          <CommonButton tital={'Login'} />
-        </Box>
-
-        <Box>
-            <Link to={'/register'}>
-            <Typography>Register page</Typography>
-            </Link>
+          <CommonInput
+            label={'Email'}
+            type={'email'}
+            onchange={(e) => setEmail(e.target.value)}
             
+
+          />
+          <CommonInput
+            label={'Password'}
+            type={'password'}
+            onchange={(e) => setPassword(e.target.value)}
+            />
+
+        </Box>
+
+        <Box>
+          <CommonButton 
+          tital={'Login'} 
+          onclick={LoginPage}
+          />
+        </Box>
+
+        <Box>
+          <Link to={'/register'}>
+            <Typography>Register page</Typography>
+          </Link>
+
         </Box>
       </Box>
     </Box>
