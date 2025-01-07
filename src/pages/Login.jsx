@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import CommonButton from '../common/component/CommonButton';
 import CommonInput from '../common/component/commonInput';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import instance from '../services/AxiosOder';
 
 export default function Login() {
-  
+
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,13 +20,23 @@ export default function Login() {
       password: password
     }
 
-    instance.post('/login/user',data)
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+    instance.post('/user/login', data)
+      .then((res) => {
+        localStorage.setItem('mail', res.data.email);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+
+        setEmail('');
+        setPassword('');
+        
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+
+      })
   }
 
 
@@ -61,21 +74,21 @@ export default function Login() {
             label={'Email'}
             type={'email'}
             onchange={(e) => setEmail(e.target.value)}
-            
+
 
           />
           <CommonInput
             label={'Password'}
             type={'password'}
             onchange={(e) => setPassword(e.target.value)}
-            />
+          />
 
         </Box>
 
         <Box>
-          <CommonButton 
-          tital={'Login'} 
-          onclick={LoginPage}
+          <CommonButton
+            tital={'Login'}
+            onclick={LoginPage}
           />
         </Box>
 

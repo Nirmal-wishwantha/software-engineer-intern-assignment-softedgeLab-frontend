@@ -57,7 +57,7 @@ export default function Register() {
         </Box>
 
         <Box>
-          <Link to={'/register'}>
+          <Link to={'/login'}>
             <Typography>Login page</Typography>
           </Link>
 
