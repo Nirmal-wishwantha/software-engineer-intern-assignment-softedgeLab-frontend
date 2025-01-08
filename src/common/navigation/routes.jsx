@@ -1,20 +1,16 @@
 import EventUpdate from "../../pages/EventUpdate"
 import EventCreation from "../../pages/EventCreation"
-import EventList from "../../pages/EventList"
+// import EventList from "../../pages/EventList"
 import EventDetaisl from "../../pages/EventDetaisl"
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import InfoIcon from '@mui/icons-material/Info';
 import EditIcon from '@mui/icons-material/Edit';
+import AnalyticsEvent from "../../pages/AnalyticsEvent";
 
 const routes =[
 
-    {
-        path: '/EventList',
-        Element: <EventList />,
-        text: 'Event List',
-        icon: <ListAltIcon/>
-    },
+   
 
     {
         path: '/EventDetaisl',
@@ -35,6 +31,13 @@ const routes =[
         Element: <EventCreation />,
         text: 'Event Creation',
         icon: <AddCircleOutlineIcon/>
+    },
+
+     {
+        path: '/AnalyticsEvent',
+        Element: <AnalyticsEvent />,
+        text: 'Analytics Event',
+        icon: <ListAltIcon/>
     },
 
    

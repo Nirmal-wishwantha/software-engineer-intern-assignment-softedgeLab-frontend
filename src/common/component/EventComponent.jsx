@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
+import CommonButton from './CommonButton';
 
 
-export default function EventComponent({ name, description, date, location, createdBy, capacity, remainingCapacity, tags, massages,no }) {
+export default function EventComponent({ name, description, date, location, createdBy, capacity, remainingCapacity, 
+  tags, massages,no ,onclickUpdate,onclickDelete}) {
 
   return (
 
@@ -19,34 +21,33 @@ export default function EventComponent({ name, description, date, location, crea
 
         <CardContent>
           <Typography> No: {no}</Typography>
-          <Typography variant="h5" sx={{ fontWeight: 600, textAlign: 'center', marginBottom: 2 }}>
+          <Typography  sx={{ fontWeight: 600, textAlign: 'center', marginBottom: 2 }}>
            Name: {name}
           </Typography>
 
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Description:{description}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Date:{date}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Location: {location}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Created By: {createdBy}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Capacity: {capacity}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography  sx={{ marginBottom: 1 ,fontWeight:700}}>
             Remaining Capacity:{remainingCapacity}
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 1 ,fontWeight:700}}>
+          <Typography sx={{ marginBottom: 1 ,fontWeight:700}}>
             Tags: {tags}
           </Typography>
 
           <Typography
-            variant="body2"
             sx={{
               marginTop: 3,
               padding: 1,
@@ -57,9 +58,23 @@ export default function EventComponent({ name, description, date, location, crea
             }}
           >
             {massages}
-            iviuwvb
+            
           </Typography>
         </CardContent>
+
+        <Box>
+          <CommonButton
+          title={'update'}
+          onclick={onclickUpdate}
+          >
+          </CommonButton>
+
+          <CommonButton
+          title={'Delete'}
+          onclick={onclickDelete}
+          >
+          </CommonButton>
+        </Box>
       </Card>
     </Box>
   );

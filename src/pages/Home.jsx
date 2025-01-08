@@ -242,7 +242,7 @@ export default function Home() {
         <DrawerHeader />
 
         <Routes>
-          <Route path='*' element={<Navigate to={'/EventList'} />} />
+          <Route path='*' element={<Navigate to={'/EventDetails'} />} />
           {getRouts()}
         </Routes>
 
