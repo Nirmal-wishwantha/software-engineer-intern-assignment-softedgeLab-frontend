@@ -10,7 +10,7 @@ export default function EventCreation() {
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [createdBy, setCreatedBy] = useState('');
-  const [capacity, setCapacity] = useState('');
+  const [capacity, setCapacity] = useState();
   const [tags, setTags] = useState('');
 
   const addEvent = () => {
@@ -20,18 +20,19 @@ export default function EventCreation() {
       date:date,
       location:location,
       createdBy:createdBy,
-      capacity:capacity,
-      tags,
+      capacity: parseInt(capacity),
+      tags:tags
     };
+    // console.log('Event Data:', data);
 
     instance
       .post('/event', data)
       .then((res) => {
-        console.log(res);
+        console.log('Data added successfully:', res.data);
         clear();
       })
       .catch((err) => {
-        console.log(err);
+        console.error('Error adding event:', err);
       });
   };
 
@@ -96,6 +97,7 @@ export default function EventCreation() {
           />
           <CommonInput
             label="Capacity"
+            type="number"
             onChange={(e) => setCapacity(e.target.value)}
           />
           <CommonInput
@@ -111,14 +113,8 @@ export default function EventCreation() {
               marginTop: 3,
             }}
           >
-            <CommonButton
-              title="Submit"
-              onClick={addEvent}
-            />
-            <CommonButton
-              title="Clear"
-              onClick={clear}
-            />
+            <CommonButton title="Submit" onClick={addEvent} />
+            <CommonButton title="Clear" onClick={clear} />
           </Box>
         </Box>
       </Box>
