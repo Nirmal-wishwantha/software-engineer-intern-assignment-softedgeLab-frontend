@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-export default function CommonButton({ title,onclick }) {
+export default function CommonButton({ title,onClick }) {
   return (
     <Button
       variant="contained"
       color="primary"
-      onClick={onclick}
+      onClick={onClick}
       sx={{
         marginTop: 2,
         padding: '10px 20px',

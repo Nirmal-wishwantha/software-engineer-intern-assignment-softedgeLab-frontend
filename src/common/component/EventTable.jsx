@@ -8,8 +8,10 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import CommonButton from "./CommonButton";
+import AnalyModel from "./AnalyModel";
 
-export default function EventTable({ events=[] }) {
+export default function EventTable({ events = [] }) {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -20,7 +22,8 @@ export default function EventTable({ events=[] }) {
             <TableCell>Location</TableCell>
             <TableCell>Date</TableCell>
             <TableCell>Remaining Capacity</TableCell>
-            <TableCell>Action</TableCell>
+            <TableCell sx={{ textAlign: 'center', verticalAlign: 'middle' }}>Action</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -31,10 +34,13 @@ export default function EventTable({ events=[] }) {
               <TableCell>{event.location}</TableCell>
               <TableCell>{new Date(event.date).toLocaleDateString()}</TableCell>
               <TableCell>{event.remainingCapacity}</TableCell>
-
-
-              <TableCell>{event.remainingCapacity}</TableCell>
               
+              <TableCell>
+
+              <AnalyModel eventId={event.eventId} />
+
+              </TableCell>
+
             </TableRow>
           ))}
         </TableBody>

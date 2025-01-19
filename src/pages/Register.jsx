@@ -2,13 +2,41 @@ import React, { useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import CommonButton from '../common/component/CommonButton'
 import CommonInput from '../common/component/commonInput'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import instance from '../services/AxiosOder'
 
 export default function Register() {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const RegisterHandle = () => {
+    const data = {
+      name: name,
+      email: email,
+      password: password
+    }
+
+    instance.post('/user/register', data)
+      .then((res) => {
+        console.log(res);
+
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000)
+
+      })
+      .catch((err) => {
+        console.log(err);
+
+      })
+  }
+
+
+
 
   return (
     <Box
@@ -40,20 +68,22 @@ export default function Register() {
         <Box sx={{ marginTop: 2 }}>
 
           <CommonInput label={'Name'} type={'text'}
-            onchange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <CommonInput label={'Email'} type={'email'}
-            onchange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <CommonInput label={'Password'} type={'password'}
-            onchange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
         </Box>
 
         <Box>
-          <CommonButton title={'Login'} />
+          <CommonButton title={'Register'}
+            onClick={RegisterHandle}
+          />
         </Box>
 
         <Box>

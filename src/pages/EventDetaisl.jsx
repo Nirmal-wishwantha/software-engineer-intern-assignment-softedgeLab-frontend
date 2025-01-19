@@ -3,31 +3,24 @@ import { Box, Card, CardContent, SliderValueLabel, Typography } from '@mui/mater
 import instance from '../services/AxiosOder';
 import EventComponent from '../common/component/EventComponent';
 import EventTable from '../common/component/EventTable';
-import AnalyticsEvent from './AnalyticsEvent';
+import AnalyticsEvent from '../common/component/AnalyticsTable';
 
 export default function EventDetaisl() {
 
-  const [event,setEvent] = useState([]);
-
-  const [analy,setAnaly] = useState([]);
-
+  const [events, setEvent] = useState([]);
+ 
   useEffect(() => {
     getEvent();
-
   }, [])
 
   const getEvent = () => {
-
     instance.get('/event')
       .then((res) => {
         setEvent(res.data);
-
         console.log(res.data);
-
       })
       .catch((err) => {
         console.log(err);
-
       })
   }
 
@@ -45,43 +38,32 @@ export default function EventDetaisl() {
   }
 
 
-
-  const analys = (id) => {
-    const any = parseInt(id, 10);
-    instance.get(`/event/${any}`)
-set
+  //update event
+  const UpdateEvent = (id, updatedData) => {
+    instance.put(`/event/${id}`, updatedData)
       .then((res) => {
-        console.log(res);
-        setAnaly()
-
+        console.log('Event updated:', res.data);
+        getEvent();
       })
       .catch((err) => {
-        console.log(err);
-
-      })
-  }
-
+        console.error('Error updating event:', err);
+      });
+  };
 
 
   return (
     <div>
 
-      <Box>
-        <AnalyticsEvent
-          events={analy}
-        />
-      </Box>
-
-
+      
       <Box>
         <EventTable
-          events={event}
+          events={events}
         />
       </Box>
 
       <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
         {
-          event.map((val, index) => (
+          events.map((val, index) => (
             <EventComponent key={index}
               no={index + 1}
               name={val.name}
@@ -94,7 +76,8 @@ set
               tags={val.tags}
               massages={val.massages}
               onclickDelete={() => onclickDelete(val.eventId)}
-            // analyData={() => analyData(val.eventId)}
+              updateEvent={(updatedData) => UpdateEvent(val.eventId, updatedData)}
+
 
             />
           ))

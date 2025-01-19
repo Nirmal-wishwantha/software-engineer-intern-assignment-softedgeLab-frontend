@@ -12,6 +12,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
 
 
   const LoginPage = () => {
@@ -73,14 +74,14 @@ export default function Login() {
           <CommonInput
             label={'Email'}
             type={'email'}
-            onchange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
 
 
           />
           <CommonInput
             label={'Password'}
             type={'password'}
-            onchange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
         </Box>
@@ -88,7 +89,7 @@ export default function Login() {
         <Box>
           <CommonButton
             title={'Login'}
-            onclick={LoginPage}
+            onClick={LoginPage}
           />
         </Box>
 
