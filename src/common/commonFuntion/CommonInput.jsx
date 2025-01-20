@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, TextField } from '@mui/material';
+import {TextField } from '@mui/material';
 
 export default function CommonInput({ type, label, onChange ,value,name}) {
   return (

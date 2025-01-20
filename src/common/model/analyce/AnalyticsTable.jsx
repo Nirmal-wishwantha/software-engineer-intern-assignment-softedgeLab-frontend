@@ -1,7 +1,7 @@
 import { TableContainer,Paper,Table,TableBody,TableCell,TableHead,TableRow } from "@mui/material";
 import { useState,useEffect } from "react";
 import { Box } from '@mui/material';
-import instance from "../../services/AxiosOder";
+import instance from "../../../services/AxiosOder";
 
 
 export default function AnalyticsTable({ eventId }) {
@@ -18,15 +18,15 @@ export default function AnalyticsTable({ eventId }) {
       .get(`/event/analytics/${id}`)
       .then((res) => {
         setEvents(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
 
   return (
-    <Box sx={{ width: "90%", margin: "auto" }}>
+    <Box>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
