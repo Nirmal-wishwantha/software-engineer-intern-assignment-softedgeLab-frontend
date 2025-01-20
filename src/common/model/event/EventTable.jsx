@@ -8,8 +8,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import CommonButton from "./CommonButton";
-import AnalyModel from "./AnalyModel";
+import AnalyModel from '../../model/analyce/AnalyModel';
 
 export default function EventTable({ events = [] }) {
   return (

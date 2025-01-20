@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import CommonInput from '../common/component/commonInput';
+import CommonInput from '../common/commonFuntion/CommonInput';
 import { Box, Typography } from '@mui/material';
 import instance from '../services/AxiosOder';
-import CommonButton from '../common/component/CommonButton';
+import CommonButton from '../common/commonFuntion/CommonButton';
 
 export default function EventCreation() {
   const [name, setName] = useState('');

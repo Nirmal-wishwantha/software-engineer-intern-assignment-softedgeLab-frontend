@@ -16,13 +16,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import CommonButton from '../common/component/CommonButton';
 
 import routes from '../common/navigation/routes';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import CommonButton from '../common/commonFuntion/CommonButton';
 
 const drawerWidth = 240;
 
@@ -228,7 +226,7 @@ export default function Home() {
 
         <Divider />
 
-        <Box>
+        <Box sx={{margin:3}}>
           <CommonButton
             title={'Log Out'}
             onclick={logOut}
@@ -242,7 +240,7 @@ export default function Home() {
         <DrawerHeader />
 
         <Routes>
-          <Route path='*' element={<Navigate to={'/EventDetails'} />} />
+          <Route path='*' element={<Navigate to={'/EventDetaisl'} />} />
           {getRouts()}
         </Routes>
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import CommonButton from '../common/component/CommonButton';
-import CommonInput from '../common/component/commonInput';
+import CommonButton from '../common/commonFuntion/CommonButton';
+import CommonInput from '../common/commonFuntion/CommonInput';
 import { Link, useNavigate } from 'react-router-dom';
 import instance from '../services/AxiosOder';
 

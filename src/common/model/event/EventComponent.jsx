@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import CommonButton from './CommonButton';
+import CommonButton from '../../commonFuntion/CommonButton';
 import EventUpdate from './EventUpdate';
+import AttendeeRegister from '../../model/attendee/AttendeeRegister';
 
 export default function EventComponent({
   name,
@@ -16,11 +17,17 @@ export default function EventComponent({
   no,
   onclickDelete,
   updateEvent,
+  eventId,
+  getEvent,
 }) {
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const handleUpdateClick = () => setIsUpdateOpen(true);
-  const handleClose = () => setIsUpdateOpen(false);
+  const handleCloseUpdate = () => setIsUpdateOpen(false);
+
+  const handleRegisterClick = () => setIsRegisterOpen(true);
+  const handleCloseRegister = () => setIsRegisterOpen(false);
 
   return (
     <Box sx={{ margin: 2 }}>
@@ -75,9 +82,9 @@ export default function EventComponent({
         <Box>
           <CommonButton title="Update" onClick={handleUpdateClick} />
           <CommonButton title="Delete" onClick={onclickDelete} />
+          <CommonButton title="Register" onClick={handleRegisterClick} />
         </Box>
       </Card>
-
 
       {isUpdateOpen && (
         <EventUpdate
@@ -92,10 +99,16 @@ export default function EventComponent({
             tags,
           }}
           updateEvent={updateEvent}
-          onClose={handleClose}
+          onClose={handleCloseUpdate}
         />
       )}
 
+      <AttendeeRegister
+        open={isRegisterOpen}
+        setOpen={setIsRegisterOpen}
+        eventId={eventId}
+        getEvent={getEvent}
+      />
     </Box>
   );
 }

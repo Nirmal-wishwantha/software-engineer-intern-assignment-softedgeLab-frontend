@@ -3,8 +3,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import CommonInput from './commonInput';
-import CommonButton from './CommonButton';
+
+import CommonButton from '../../commonFuntion/CommonButton';
+import CommonInput from '../../commonFuntion/CommonInput';
 
 export default function EventUpdate({ event, updateEvent, onClose }) {
   const [formData, setFormData] = useState({
