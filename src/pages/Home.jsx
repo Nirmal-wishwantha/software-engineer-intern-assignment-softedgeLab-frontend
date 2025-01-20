@@ -21,6 +21,7 @@ import routes from '../common/navigation/routes';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import CommonButton from '../common/commonFuntion/CommonButton';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -114,13 +115,14 @@ export default function Home() {
     setOpen(false);
   };
 
-  // const navigate = useNavigate();
+ 
   // log out
-
   const logOut = () => {
+
     localStorage.removeItem('mail');
     window.location.reload();
   };
+
 
   // routes
   const getRouts = () =>
@@ -227,11 +229,13 @@ export default function Home() {
         <Divider />
 
         <Box sx={{margin:3}}>
+
           <CommonButton
             title={'Log Out'}
-            onclick={logOut}
+            onClick={logOut}
           >
           </CommonButton>
+
         </Box>
 
       </Drawer>

@@ -18,10 +18,10 @@ export default function AnalyticsTable({ eventId }) {
       .get(`/event/analytics/${id}`)
       .then((res) => {
         setEvents(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   };
 

@@ -24,14 +24,14 @@ export default function AttendeeRegister({ open, setOpen, getEvent, eventId }) {
     
     instance.post(`/attendees/${eventId}`, data)
       .then((res) => {
-        console.log('Registration successful:', res.data);
+        // console.log('Registration successful:', res.data);
         setName('');
         setEmail('');
         getEvent();
         setOpen(false);
       })
       .catch((err) => {
-        console.error('Error during registration:', err);
+        // console.error('Error during registration:', err);
       });
   };
 
